@@ -36,19 +36,17 @@ bool Chip8::LoadApplication(const char * romname)
 {
     Initialize();
 
-    std::ifstream ifs (romname, std::ifstream::in);
-    
-    while(ifs.good())
-    {
-        std::cout << ifs.get();
-    }
+    std::ifstream ifs (romname, std::ifstream::binary | std::ifstream::ate );
+    std::streampos file_size = ifs.tellg();
+    ifs.seekg(0, std::ios_base::beg);
 
-    if (ifs.is_open())
-    {
-        std::cout << "Yo!\n";
-
-    }
     //Read into buffer
+    char buffer[(int)file_size];
+    if(ifs.read(buffer, file_size))
+    {
+        std::cout << "LoadApplication: Load into buffer\n";
+    }
+
     //Read into memory
 
     ifs.close();
