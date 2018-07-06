@@ -16,6 +16,7 @@ int display_height = SCREEN_HEIGHT * modifier;
 void display()
 {
     glutSwapBuffers();
+    glClear(GL_COLOR_BUFFER_BIT);
     
 }
 
