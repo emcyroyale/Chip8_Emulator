@@ -2,6 +2,8 @@
 #ifndef CHIP8_H
 #define CHIP8_H
 
+#include "Instruction.h"
+
 class Chip8
 {
     public:
@@ -24,9 +26,10 @@ class Chip8
     unsigned char V[16];
     unsigned short stack[16];
     unsigned char memory[4096]; 
+    Instruction inst[36];
+
     
     void Initialize();
-
 
 };
 #endif

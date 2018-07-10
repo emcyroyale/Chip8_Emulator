@@ -1,6 +1,7 @@
 #include "chip8.h"
 #include <fstream>
 #include <iostream>
+#include <bitset>
 
 void Chip8::Initialize()
 {
@@ -25,12 +26,22 @@ void Chip8::Initialize()
 					
     //Clear screen
     drawFlag = true;
+
+
+    //Setup Instructions
+    inst[0] = Instruction(0xF000,
+        [](){
+            std::cout << "Print MEEE\n";
+        });
+    inst[0].action();
+    
 }
 
 void Chip8::EmulateCycle()
 {
     this->opcode = this->memory[pc] << 8 | this->memory[pc + 1];
-    std::cout << this->opcode << " ";
+    std::bitset<16> op (opcode);
+    std::cout << std::hex << op << " " << opcode << "\n";
     pc += 2;
 }
 

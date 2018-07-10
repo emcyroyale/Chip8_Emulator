@@ -1,4 +1,5 @@
 #include "chip8.h"
+#include "Instruction.h"
 #include <GL/glut.h>
 #include <iostream>
 #include <bitset>
@@ -22,10 +23,10 @@ void display()
 
 void bitwiseTest()
 {
-    int a = 8;
+    int a = 0xF000;
     int b = 19;
     int c = a & b;
-    std::cout << c << "\n";
+    std::cout << a << " " << b << " " << c << "\n";
 
     std::bitset<32> ba (a);
     std::bitset<32> bb (b);
@@ -35,6 +36,15 @@ void bitwiseTest()
     std::cout << ba << " " << bb << "\n";
     std::cout << bor << " " << band << " " << bshift <<  "\n";
     std::cout << sizeof(unsigned short) << "\n";
+}
+
+void instructionTest()
+{
+    Instruction i(0xF000,
+        [](){
+            std::cout << "Print MEEE\n";
+        });
+    i.action();
 }
 
 int main(int argc, char **argv)
@@ -47,11 +57,18 @@ int main(int argc, char **argv)
 
     Chip8 c8;
     c8.LoadApplication(argv[1]);
-//    for(int i = 0; i < (4096-512)/2; i++)
-//    {
-//        c8.EmulateCycle();
-//    }
-    bitwiseTest();
+    for(int i = 0; i < 150; i++)
+    {
+        c8.EmulateCycle();
+    }
+//    bitwiseTest();
+//    instructionTest();
+    std::cout << "AJDLJSLD\n";
+    std::cout << "AJDLJSLD\n";
+    std::cout << "AJDLJSLD\n";
+    std::cout << "AJDLJSLD\n";
+    std::cout << "QUE" << sizeof(unsigned short) << "\n";
+    std::cout << "QUQUQU\n";
 
 	glutInit(&argc, argv);          
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
