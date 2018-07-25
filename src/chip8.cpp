@@ -40,8 +40,23 @@ void Chip8::Initialize()
 void Chip8::EmulateCycle()
 {
     this->opcode = this->memory[pc] << 8 | this->memory[pc + 1];
-    std::bitset<16> op (opcode);
-    std::cout << std::hex << op << " " << opcode << "\n";
+    std::bitset<16> op (this->opcode);
+    unsigned short ins = 0x22FC;
+    std::bitset<16> iop (ins);
+    std::cout << std::hex << op << " " << this->opcode << " " << ins << " " << iop <<  "\n";
+    std::cout << std::dec << ((int)this->opcode) << " " << ((int)ins) << "\n";
+
+    if(this->opcode==(unsigned short)0x22FC)
+    {
+        std::cout << "YYOYOYOYOY1111\n";
+    }
+
+    if(this->opcode==ins)
+    {
+        std::cout << "YYOYOYOYOY2222\n";
+    }
+
+
     pc += 2;
 }
 

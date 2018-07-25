@@ -42,7 +42,7 @@ void instructionTest()
 {
     Instruction i(0xF000,
         [](){
-            std::cout << "Print MEEE\n";
+            std::cout << "Print MaaaEEE\n";
         });
     i.action();
 }
@@ -63,12 +63,7 @@ int main(int argc, char **argv)
     }
 //    bitwiseTest();
 //    instructionTest();
-    std::cout << "AJDLJSLD\n";
-    std::cout << "AJDLJSLD\n";
-    std::cout << "AJDLJSLD\n";
-    std::cout << "AJDLJSLD\n";
     std::cout << "QUE" << sizeof(unsigned short) << "\n";
-    std::cout << "QUQUQU\n";
 
 	glutInit(&argc, argv);          
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
