@@ -29,7 +29,7 @@ void Chip8::Initialize()
 
 
     //Setup Instructions
-    inst[0] = Instruction(0xF000,
+    inst[0] = Instruction(0x0000,
         [](){
             std::cout << "Print MEEE\n";
         });
@@ -41,20 +41,62 @@ void Chip8::EmulateCycle()
 {
     this->opcode = this->memory[pc] << 8 | this->memory[pc + 1];
     std::bitset<16> op (this->opcode);
-    unsigned short ins = 0x22FC;
-    std::bitset<16> iop (ins);
-    std::cout << std::hex << op << " " << this->opcode << " " << ins << " " << iop <<  "\n";
-    std::cout << std::dec << ((int)this->opcode) << " " << ((int)ins) << "\n";
+
+    unsigned short proc_op = this->opcode & 0xF000;
+    std::bitset<16> pop (proc_op);
+    
+
+    std::cout << std::hex << op << " " << this->opcode << " " << "\n";
+    std::cout << "Process: " << std::hex << pop << " " << proc_op << "\n";
+    std::cout << "________________\n";
 
     if(this->opcode==(unsigned short)0x22FC)
     {
         std::cout << "YYOYOYOYOY1111\n";
     }
 
-    if(this->opcode==ins)
+    //Process opcode
+    //Figure out which Instruction
+    //Run instruction action
+
+    switch(this->opcode & 0xF000)
     {
-        std::cout << "YYOYOYOYOY2222\n";
+
+        case 0x0000:
+            //3
+        case 0x1000:
+            //1
+        case 0x2000:
+            //1
+        case 0x3000:
+            //1
+        case 0x4000:
+            //1
+        case 0x5000:
+            //1
+        case 0x6000:
+            //1
+        case 0x7000:
+            //1
+        case 0x8000:
+            //9
+        case 0x9000:
+            //1
+        case 0xA000:
+            //1
+        case 0xB000:
+            //1
+        case 0xC000:
+            //1
+        case 0xD000:
+            //1
+        case 0xE000:
+            //2
+        case 0xF000:
+            //9
+
     }
+
 
 
     pc += 2;

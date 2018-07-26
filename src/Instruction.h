@@ -13,6 +13,7 @@ class Instruction
         Instruction();
         Instruction(unsigned short op, std::function<void ()> func);
         unsigned short opcode;
+        unsigned short primary_mask, secondary_mask;
         bool action();
     
 };
