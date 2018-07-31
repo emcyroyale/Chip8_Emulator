@@ -26,6 +26,9 @@ class Chip8
     unsigned char V[16];
     unsigned short stack[16];
     unsigned char memory[4096]; 
+    unsigned char  delay_timer;
+    unsigned char  sound_timer;
+
     Instruction inst[36];
 
     
